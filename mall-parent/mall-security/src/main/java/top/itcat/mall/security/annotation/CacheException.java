@@ -1,10 +1,10 @@
-package top.itcat.mall.common.domain;
+package top.itcat.mall.security.annotation;
 
 import java.lang.annotation.*;
 
 /**
- * @className: DescOperation <br/>
- * @description: 描述操作注解 <br/>
+ * @className: CacheException <br/>
+ * @description: 缓存异常注解 <br/>
  * @author: CatKitty 33641 <br/>
  * @date: 2023/06/04 <br/>
  * @version: 1.0.0 <br/>
@@ -12,8 +12,5 @@ import java.lang.annotation.*;
 @Documented
 @Target(ElementType.METHOD)
 @Retention(RetentionPolicy.RUNTIME)
-public @interface DescOperation {
-
-    String value() default "";
-
+public @interface CacheException {
 }
