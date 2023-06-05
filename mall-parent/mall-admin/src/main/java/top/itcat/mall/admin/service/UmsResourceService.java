@@ -30,4 +30,13 @@ public interface UmsResourceService extends IService<UmsResource> {
      * @return 资源列表
      */
     List<UmsResource> listAllByAdminId(Long adminId);
+
+    /**
+     * 根据角色id获取资源列表
+     *
+     * @param roleId
+     *         角色id
+     * @return 资源列表
+     */
+    List<UmsResource> listAllByRoleId(Long roleId);
 }

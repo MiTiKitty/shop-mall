@@ -23,4 +23,12 @@ public interface UmsMenuService extends IService<UmsMenu> {
      */
     List<UmsMenu> listByAdminId(Long adminId);
 
+    /**
+     * 根据角色id获取菜单列表
+     *
+     * @param roleId
+     *         角色id
+     * @return 菜单列表
+     */
+    List<UmsMenu> listByRoleId(Long roleId);
 }

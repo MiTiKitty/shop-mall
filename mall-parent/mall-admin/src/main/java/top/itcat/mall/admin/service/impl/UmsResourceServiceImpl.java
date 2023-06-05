@@ -28,4 +28,9 @@ public class UmsResourceServiceImpl extends ServiceImpl<UmsResourceMapper, UmsRe
     public List<UmsResource> listAllByAdminId(Long adminId) {
         return baseMapper.selectListByAdminId(adminId);
     }
+
+    @Override
+    public List<UmsResource> listAllByRoleId(Long roleId) {
+        return baseMapper.selectListByRoleId(roleId);
+    }
 }

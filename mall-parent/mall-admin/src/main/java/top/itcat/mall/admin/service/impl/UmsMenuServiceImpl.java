@@ -23,4 +23,9 @@ public class UmsMenuServiceImpl extends ServiceImpl<UmsMenuMapper, UmsMenu> impl
     public List<UmsMenu> listByAdminId(Long adminId) {
         return baseMapper.selectListByAdminId(adminId);
     }
+
+    @Override
+    public List<UmsMenu> listByRoleId(Long roleId) {
+        return baseMapper.selectListByRoleId(roleId);
+    }
 }
