@@ -41,8 +41,8 @@ import java.util.Map;
 @Order(1)
 public class WebLogAspect {
 
-    @Pointcut("execution(public * top.itcat.mall.*.controller.*.*(..))")
-    public void weblog(){}
+    @Pointcut("execution(* top.itcat.mall.*.controller.*.*(..))")
+    public void webLog(){}
 
     @Before("webLog()")
     public void doBefore(JoinPoint joinPoint) throws Throwable {
@@ -55,10 +55,10 @@ public class WebLogAspect {
     @Around("webLog()")
     public Object doAround(ProceedingJoinPoint joinPoint) throws Throwable {
         long startTime = System.currentTimeMillis();
-        //获取当前请求对象
+        // 获取当前请求对象
         ServletRequestAttributes attributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
         HttpServletRequest request = attributes.getRequest();
-        //记录请求信息(通过Logstash传入Elasticsearch)
+        // 记录请求信息(通过Logstash传入Elasticsearch)
         WebLog webLog = new WebLog();
         Object result = joinPoint.proceed();
         Signature signature = joinPoint.getSignature();

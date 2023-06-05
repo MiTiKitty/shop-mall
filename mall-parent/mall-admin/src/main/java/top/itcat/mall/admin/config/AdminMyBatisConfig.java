@@ -6,7 +6,6 @@ import com.baomidou.mybatisplus.extension.plugins.inner.PaginationInnerIntercept
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 /**
  * @className: MyBatisConfig <br/>
@@ -16,9 +15,8 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
  * @version: 1.0.0 <br/>
  */
 @Configuration
-@EnableTransactionManagement
-@MapperScan({"top.itcat.mall.mapper", "top.itcat.mall.admin.mapper"})
-public class MyBatisConfig {
+@MapperScan("top.itcat.mall.admin.mapper")
+public class AdminMyBatisConfig {
 
     /**
      * 定义分页拦截器

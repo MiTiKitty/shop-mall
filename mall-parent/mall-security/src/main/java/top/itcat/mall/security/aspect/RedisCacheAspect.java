@@ -26,10 +26,10 @@ import java.lang.reflect.Method;
 @Order(2)
 public class RedisCacheAspect {
 
-    @Pointcut("execution(public * top.itcat.mall.portal.service.*CacheService.*(..))")
+    @Pointcut("execution(public * top.itcat.mall.*.service.*CacheService.*(..))")
     public void cachePoint(){}
 
-    @Around("cacheAspect()")
+    @Around("cachePoint()")
     public Object doAround(ProceedingJoinPoint joinPoint) throws Throwable {
         Signature signature = joinPoint.getSignature();
         MethodSignature methodSignature = (MethodSignature) signature;
