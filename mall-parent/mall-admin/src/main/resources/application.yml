@@ -13,8 +13,8 @@ spring:
 
 mybatis:
   mapper-locations:
-    - classpath:dao/*.xml
-    - classpath*:com/**/mapper/*.xml
+    - classpath:mapper/*.xml
+    - classpath*:top/**/mapper/*.xml
 
 jwt:
   tokenHeader: Authorization # JWT存储的请求头
