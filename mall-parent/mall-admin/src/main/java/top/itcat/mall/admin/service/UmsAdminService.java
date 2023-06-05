@@ -3,6 +3,7 @@ package top.itcat.mall.admin.service;
 import com.baomidou.mybatisplus.extension.service.IService;
 import org.springframework.security.core.userdetails.UserDetails;
 import top.itcat.mall.admin.dto.UmsAdminRegisterParam;
+import top.itcat.mall.admin.dto.UpdateAdminPasswordParam;
 import top.itcat.mall.admin.vo.AdminInfoVO;
 import top.itcat.mall.admin.vo.UmsAdminRegisterSuccessVO;
 import top.itcat.mall.common.api.CommonPage;
@@ -109,4 +110,22 @@ public interface UmsAdminService extends IService<UmsAdmin> {
      * @return 查询用户列表
      */
     CommonPage<UmsAdminRegisterSuccessVO> listByPage(Integer pageNum, Integer pageSize, String keyword);
+
+    /**
+     * 根据用户id删除用户信息，包括该用户的所有联系信息
+     *
+     * @param id
+     *         用户id
+     * @return 成功与否
+     */
+    Boolean removeAdminById(Long id);
+
+    /**
+     * 修改用户密码
+     *
+     * @param param
+     *         修改参数对象
+     * @return 状态值
+     */
+    int updateAdminPassword(UpdateAdminPasswordParam param);
 }

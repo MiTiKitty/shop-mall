@@ -3,7 +3,9 @@ package top.itcat.mall.admin.service;
 import com.baomidou.mybatisplus.extension.service.IService;
 import top.itcat.mall.entity.UmsRole;
 
+import java.util.Collection;
 import java.util.List;
+import java.util.Set;
 
 /**
  * @className: UmsRoleService <br/>
@@ -23,4 +25,13 @@ public interface UmsRoleService extends IService<UmsRole> {
      */
     List<UmsRole> listByAdminId(Long adminId);
 
+    /**
+     * 根据角色id集合修改该角色所拥有的用户数量
+     *
+     * @param ids
+     *         id集合
+     * @param value
+     *         操作值
+     */
+    void updateAdminCountByIds(Collection<Long> ids, int value);
 }

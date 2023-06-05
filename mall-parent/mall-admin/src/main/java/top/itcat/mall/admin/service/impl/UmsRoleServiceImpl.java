@@ -1,5 +1,6 @@
 package top.itcat.mall.admin.service.impl;
 
+import cn.hutool.core.collection.CollUtil;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -7,6 +8,7 @@ import top.itcat.mall.admin.service.UmsRoleService;
 import top.itcat.mall.entity.UmsRole;
 import top.itcat.mall.mapper.UmsRoleMapper;
 
+import java.util.Collection;
 import java.util.List;
 
 /**
@@ -22,5 +24,13 @@ public class UmsRoleServiceImpl extends ServiceImpl<UmsRoleMapper, UmsRole> impl
     @Override
     public List<UmsRole> listByAdminId(Long adminId) {
         return baseMapper.selectListByAdminId(adminId);
+    }
+
+    @Override
+    public void updateAdminCountByIds(Collection<Long> ids, int value) {
+        if (CollUtil.isEmpty(ids) || Math.abs(value) > 1) {
+            return;
+        }
+        baseMapper.updateAdminCountByIds(ids, value);
     }
 }

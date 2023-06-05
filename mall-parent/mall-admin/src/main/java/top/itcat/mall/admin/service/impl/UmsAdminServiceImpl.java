@@ -20,6 +20,7 @@ import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 import top.itcat.mall.admin.bo.AdminUserDetails;
 import top.itcat.mall.admin.dto.UmsAdminRegisterParam;
+import top.itcat.mall.admin.dto.UpdateAdminPasswordParam;
 import top.itcat.mall.admin.service.*;
 import top.itcat.mall.admin.vo.AdminInfoVO;
 import top.itcat.mall.admin.vo.UmsAdminRegisterSuccessVO;
@@ -189,6 +190,30 @@ public class UmsAdminServiceImpl extends ServiceImpl<UmsAdminMapper, UmsAdmin> i
             pageNum++;
         }
         return new CommonPage<>(pageNum, pageSize, (int) page.getPages(), page.getTotal(), vos);
+    }
+
+    @Override
+    public Boolean removeAdminById(Long id) {
+        // TODO 删除用户信息，包括所有附带的联系信息，缓存也需要进行删除，物理删除
+        return null;
+    }
+
+    @Override
+    public int updateAdminPassword(UpdateAdminPasswordParam param) {
+        UmsAdmin admin = getUmsAdminByUsername(param.getUsername());
+        if (admin == null) {
+            return -1;
+        }
+        if (!passwordEncoder.matches(param.getOldPassword(), admin.getPassword())) {
+            return -2;
+        }
+        UmsAdmin umsAdmin = new UmsAdmin();
+        umsAdmin.setId(admin.getId());
+        umsAdmin.setPassword(passwordEncoder.encode(param.getNewPassword()));
+        if (updateById(umsAdmin)) {
+            return 1;
+        }
+        return 0;
     }
 
     private void addLoginLog(String username) {
