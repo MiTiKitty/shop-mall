@@ -54,4 +54,15 @@ public interface UmsAdminService extends IService<UmsAdmin> {
      * @return 注册成功返回对象
      */
     UmsAdminRegisterSuccessVO register(UmsAdminRegisterParam param);
+
+    /**
+     * 使用用户名和密码进行登录
+     *
+     * @param username
+     *         用户名
+     * @param password
+     *         密码
+     * @return 登录成功生成的token，若登陆失败，则返回null
+     */
+    String login(String username, String password);
 }
