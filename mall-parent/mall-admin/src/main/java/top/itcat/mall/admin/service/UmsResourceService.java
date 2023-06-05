@@ -22,4 +22,12 @@ public interface UmsResourceService extends IService<UmsResource> {
      */
     List<UmsResource> listAll();
 
+    /**
+     * 根据用户id获取所有资源列表
+     *
+     * @param adminId
+     *         用户id
+     * @return 资源列表
+     */
+    List<UmsResource> listAllByAdminId(Long adminId);
 }

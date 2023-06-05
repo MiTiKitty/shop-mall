@@ -21,6 +21,11 @@ public class UmsResourceServiceImpl extends ServiceImpl<UmsResourceMapper, UmsRe
 
     @Override
     public List<UmsResource> listAll() {
-        return null;
+        return baseMapper.selectList(null);
+    }
+
+    @Override
+    public List<UmsResource> listAllByAdminId(Long adminId) {
+        return baseMapper.selectListByAdminId(adminId);
     }
 }
