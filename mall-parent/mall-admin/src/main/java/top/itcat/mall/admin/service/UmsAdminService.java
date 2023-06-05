@@ -5,6 +5,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import top.itcat.mall.admin.dto.UmsAdminRegisterParam;
 import top.itcat.mall.admin.vo.AdminInfoVO;
 import top.itcat.mall.admin.vo.UmsAdminRegisterSuccessVO;
+import top.itcat.mall.common.api.CommonPage;
 import top.itcat.mall.entity.UmsAdmin;
 import top.itcat.mall.entity.UmsResource;
 
@@ -95,4 +96,17 @@ public interface UmsAdminService extends IService<UmsAdmin> {
      * @return 成功与否
      */
     Boolean updateRole(Long adminId, List<Long> roleIds);
+
+    /**
+     * 分页查询用户列表
+     *
+     * @param keyword
+     *         关键词：用户名或者用户昵称
+     * @param pageSize
+     *         每页查询数量
+     * @param pageNum
+     *         当前查询页
+     * @return 查询用户列表
+     */
+    CommonPage<UmsAdminRegisterSuccessVO> listByPage(Integer pageNum, Integer pageSize, String keyword);
 }

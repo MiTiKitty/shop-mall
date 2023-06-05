@@ -1,9 +1,11 @@
 package top.itcat.mall.admin.service.impl;
 
 
+import cn.hutool.core.util.StrUtil;
 import cn.hutool.http.useragent.UserAgent;
 import cn.hutool.http.useragent.UserAgentUtil;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
@@ -21,6 +23,7 @@ import top.itcat.mall.admin.dto.UmsAdminRegisterParam;
 import top.itcat.mall.admin.service.*;
 import top.itcat.mall.admin.vo.AdminInfoVO;
 import top.itcat.mall.admin.vo.UmsAdminRegisterSuccessVO;
+import top.itcat.mall.common.api.CommonPage;
 import top.itcat.mall.common.exception.Asserts;
 import top.itcat.mall.common.util.RequestUtil;
 import top.itcat.mall.entity.*;
@@ -165,6 +168,27 @@ public class UmsAdminServiceImpl extends ServiceImpl<UmsAdminMapper, UmsAdmin> i
     public Boolean updateRole(Long adminId, List<Long> roleIds) {
         // 先删再加
         return adminRoleRelationService.updateAdminAndRoles(adminId, roleIds);
+    }
+
+    @Override
+    public CommonPage<UmsAdminRegisterSuccessVO> listByPage(Integer pageNum, Integer pageSize, String keyword) {
+        QueryWrapper<UmsAdmin> wrapper = new QueryWrapper<>();
+        if (StrUtil.isNotBlank(keyword)) {
+            wrapper.like("username", keyword)
+                    .or()
+                    .like("nick_name", keyword);
+        }
+        Page<UmsAdmin> page = new Page<>(pageNum, pageSize);
+        page(page, wrapper);
+        List<UmsAdminRegisterSuccessVO> vos = page.getRecords().stream().map(it -> {
+            UmsAdminRegisterSuccessVO vo = new UmsAdminRegisterSuccessVO();
+            BeanUtils.copyProperties(it, vo);
+            return vo;
+        }).collect(Collectors.toList());
+        if (pageNum * pageSize < page.getTotal()) {
+            pageNum++;
+        }
+        return new CommonPage<>(pageNum, pageSize, (int) page.getPages(), page.getTotal(), vos);
     }
 
     private void addLoginLog(String username) {

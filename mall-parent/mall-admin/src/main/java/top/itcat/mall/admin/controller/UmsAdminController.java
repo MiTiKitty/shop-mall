@@ -12,6 +12,7 @@ import top.itcat.mall.admin.dto.UmsAdminRegisterParam;
 import top.itcat.mall.admin.service.UmsAdminService;
 import top.itcat.mall.admin.vo.AdminInfoVO;
 import top.itcat.mall.admin.vo.UmsAdminRegisterSuccessVO;
+import top.itcat.mall.common.api.CommonPage;
 import top.itcat.mall.common.api.CommonResult;
 import top.itcat.mall.common.api.ResultCode;
 
@@ -116,6 +117,7 @@ public class UmsAdminController {
 
     /**
      * 用户登出
+     *
      * @return
      */
     @PostMapping("logout")
@@ -123,6 +125,23 @@ public class UmsAdminController {
         return CommonResult.success(null);
     }
 
-
+    /**
+     * 分页查询用户列表
+     *
+     * @param keyword
+     *         搜索关键词：用户名或者用户昵称
+     * @param pageSize
+     *         每页查询数量
+     * @param pageNum
+     *         当前查询页
+     * @return 查询用户列表
+     */
+    @GetMapping("list")
+    public CommonResult listByPage(@RequestParam(value = "keyword", required = false) String keyword,
+                                   @RequestParam(value = "pageSize", defaultValue = "5") Integer pageSize,
+                                   @RequestParam(value = "pageNum", defaultValue = "1") Integer pageNum) {
+        CommonPage<UmsAdminRegisterSuccessVO> adminList = adminService.listByPage(pageNum, pageSize, keyword);
+        return CommonResult.success(adminList);
+    }
 
 }
