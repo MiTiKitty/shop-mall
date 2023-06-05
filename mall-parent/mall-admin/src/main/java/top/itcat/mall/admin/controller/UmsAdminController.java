@@ -1,21 +1,22 @@
 package top.itcat.mall.admin.controller;
 
 import cn.hutool.core.util.StrUtil;
+import jdk.nashorn.internal.objects.annotations.Getter;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import top.itcat.mall.admin.dto.UmsAdminLoginParam;
 import top.itcat.mall.admin.dto.UmsAdminRegisterParam;
 import top.itcat.mall.admin.service.UmsAdminService;
+import top.itcat.mall.admin.vo.AdminInfoVO;
 import top.itcat.mall.admin.vo.UmsAdminRegisterSuccessVO;
 import top.itcat.mall.common.api.CommonResult;
 import top.itcat.mall.common.api.ResultCode;
 
+import javax.servlet.http.HttpServletRequest;
+import java.security.Principal;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -33,6 +34,9 @@ public class UmsAdminController {
 
     @Value("${jwt.tokenHead}")
     private String tokenHead;
+
+    @Value("${jwt.tokenHeader}")
+    private String tokenHeader;
 
     @Autowired
     private UmsAdminService adminService;
@@ -59,7 +63,7 @@ public class UmsAdminController {
     /**
      * 用户登录
      *
-     * @return 用户登录
+     * @return token
      */
     @PostMapping("login")
     public CommonResult login(@RequestBody @Validated UmsAdminLoginParam param) {
@@ -71,6 +75,43 @@ public class UmsAdminController {
         map.put("token", token);
         map.put("tokenHead", tokenHead);
         return CommonResult.success(map);
+    }
+
+    /**
+     * 刷新token
+     *
+     * @param request
+     *         请求对象
+     * @return 新的token
+     */
+    @GetMapping("refreshToken")
+    public CommonResult refreshToken(HttpServletRequest request) {
+        String token = request.getHeader(tokenHeader);
+        String refreshToken = adminService.refreshToken(token);
+        if (refreshToken == null) {
+            return CommonResult.fail("token 已过期");
+        }
+        Map<String, String> map = new HashMap<>();
+        map.put("token", refreshToken);
+        map.put("tokenHead", tokenHead);
+        return CommonResult.success(map);
+    }
+
+    /**
+     * 获取当前登录用户的信息
+     *
+     * @param principal
+     *         当前登录用户
+     * @return 登录者信息
+     */
+    @GetMapping("info")
+    public CommonResult info(Principal principal) {
+        if (principal == null) {
+            return CommonResult.fail(ResultCode.UNAUTHORIZED);
+        }
+        // 用户信息需要用户信息，权限列表，角色列表，
+        AdminInfoVO result = adminService.getInfoByUsername(principal.getName());
+        return CommonResult.success(result);
     }
 
 }

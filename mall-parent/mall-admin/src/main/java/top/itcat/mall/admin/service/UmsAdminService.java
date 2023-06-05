@@ -3,6 +3,7 @@ package top.itcat.mall.admin.service;
 import com.baomidou.mybatisplus.extension.service.IService;
 import org.springframework.security.core.userdetails.UserDetails;
 import top.itcat.mall.admin.dto.UmsAdminRegisterParam;
+import top.itcat.mall.admin.vo.AdminInfoVO;
 import top.itcat.mall.admin.vo.UmsAdminRegisterSuccessVO;
 import top.itcat.mall.entity.UmsAdmin;
 import top.itcat.mall.entity.UmsResource;
@@ -65,4 +66,33 @@ public interface UmsAdminService extends IService<UmsAdmin> {
      * @return 登录成功生成的token，若登陆失败，则返回null
      */
     String login(String username, String password);
+
+    /**
+     * 刷新token
+     *
+     * @param token
+     *         旧token
+     * @return 新token
+     */
+    String refreshToken(String token);
+
+    /**
+     * 根据用户名获取用户详细列表
+     *
+     * @param username
+     *         用户名
+     * @return 用户详情
+     */
+    AdminInfoVO getInfoByUsername(String username);
+
+    /**
+     * 更新用户角色联系
+     *
+     * @param adminId
+     *         用户id
+     * @param roleIds
+     *         角色id集合
+     * @return 成功与否
+     */
+    Boolean updateRole(Long adminId, List<Long> roleIds);
 }

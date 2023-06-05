@@ -18,20 +18,19 @@ import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 import top.itcat.mall.admin.bo.AdminUserDetails;
 import top.itcat.mall.admin.dto.UmsAdminRegisterParam;
-import top.itcat.mall.admin.service.UmsResourceService;
+import top.itcat.mall.admin.service.*;
+import top.itcat.mall.admin.vo.AdminInfoVO;
 import top.itcat.mall.admin.vo.UmsAdminRegisterSuccessVO;
 import top.itcat.mall.common.exception.Asserts;
 import top.itcat.mall.common.util.RequestUtil;
-import top.itcat.mall.entity.UmsAdmin;
-import top.itcat.mall.entity.UmsAdminLoginLog;
-import top.itcat.mall.entity.UmsResource;
+import top.itcat.mall.entity.*;
 import top.itcat.mall.mapper.UmsAdminMapper;
-import top.itcat.mall.admin.service.UmsAdminService;
 import top.itcat.mall.security.util.JwtTokenUtil;
 
 import javax.servlet.http.HttpServletRequest;
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * <p>
@@ -53,6 +52,15 @@ public class UmsAdminServiceImpl extends ServiceImpl<UmsAdminMapper, UmsAdmin> i
 
     @Autowired
     private JwtTokenUtil jwtTokenUtil;
+
+    @Autowired
+    private UmsRoleService roleService;
+
+    @Autowired
+    private UmsMenuService menuService;
+
+    @Autowired
+    private UmsAdminRoleRelationService adminRoleRelationService;
 
     @Override
     public UmsAdmin getUmsAdminByUsername(String username) {
@@ -131,6 +139,32 @@ public class UmsAdminServiceImpl extends ServiceImpl<UmsAdminMapper, UmsAdmin> i
             log.warn("登录异常：{}", e);
         }
         return token;
+    }
+
+    @Override
+    public String refreshToken(String token) {
+        return jwtTokenUtil.refreshHeadToken(token);
+    }
+
+    @Override
+    public AdminInfoVO getInfoByUsername(String username) {
+        // TODO 应该上缓存
+        UmsAdmin admin = getUmsAdminByUsername(username);
+        List<UmsRole> umsRoles = roleService.listByAdminId(admin.getId());
+        List<String> roles = umsRoles.stream().map(UmsRole::getName).collect(Collectors.toList());
+        List<UmsMenu> menus = menuService.listByAdminId(admin.getId());
+        AdminInfoVO vo = new AdminInfoVO();
+        vo.setUsername(username);
+        vo.setIcon(admin.getIcon());
+        vo.setRoles(roles);
+        vo.setMenus(menus);
+        return vo;
+    }
+
+    @Override
+    public Boolean updateRole(Long adminId, List<Long> roleIds) {
+        // 先删再加
+        return adminRoleRelationService.updateAdminAndRoles(adminId, roleIds);
     }
 
     private void addLoginLog(String username) {
