@@ -114,4 +114,15 @@ public class UmsAdminController {
         return CommonResult.success(result);
     }
 
+    /**
+     * 用户登出
+     * @return
+     */
+    @PostMapping("logout")
+    public CommonResult logout() {
+        return CommonResult.success(null);
+    }
+
+
+
 }
