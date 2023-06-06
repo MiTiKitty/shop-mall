@@ -1,6 +1,7 @@
 package top.itcat.mall.admin.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
+import top.itcat.mall.common.api.CommonPage;
 import top.itcat.mall.entity.UmsResource;
 
 import java.util.List;
@@ -39,4 +40,34 @@ public interface UmsResourceService extends IService<UmsResource> {
      * @return 资源列表
      */
     List<UmsResource> listAllByRoleId(Long roleId);
+
+    /**
+     * 分页查询资源列表
+     *
+     * @param categoryId
+     *         分类id
+     * @param nameKeyword
+     *         关键词：资源名称
+     * @param urlKeyword
+     *         关键词：url关键词
+     * @param pageSize
+     *         每页查询数量
+     * @param pageNum
+     *         当前页
+     * @return 分页查询结果
+     */
+    CommonPage<UmsResource> listByPage(Long categoryId,
+                                       String nameKeyword,
+                                       String urlKeyword,
+                                       Integer pageSize,
+                                       Integer pageNum);
+
+    /**
+     * 根据资源id删除资源及相关信息
+     *
+     * @param id
+     *         资源id
+     * @return 成功与否
+     */
+    Boolean removeResourceById(Long id);
 }
