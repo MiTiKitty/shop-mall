@@ -4,6 +4,7 @@ package top.itcat.mall.admin.service.impl;
 import cn.hutool.core.util.StrUtil;
 import cn.hutool.http.useragent.UserAgent;
 import cn.hutool.http.useragent.UserAgentUtil;
+import cn.hutool.json.JSONUtil;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
@@ -25,7 +26,9 @@ import top.itcat.mall.admin.service.*;
 import top.itcat.mall.admin.vo.AdminInfoVO;
 import top.itcat.mall.admin.vo.UmsAdminRegisterSuccessVO;
 import top.itcat.mall.common.api.CommonPage;
+import top.itcat.mall.common.constant.RedisConstant;
 import top.itcat.mall.common.exception.Asserts;
+import top.itcat.mall.common.service.RedisService;
 import top.itcat.mall.common.util.RequestUtil;
 import top.itcat.mall.entity.*;
 import top.itcat.mall.mapper.UmsAdminMapper;
@@ -66,16 +69,25 @@ public class UmsAdminServiceImpl extends ServiceImpl<UmsAdminMapper, UmsAdmin> i
     @Autowired
     private UmsAdminRoleRelationService adminRoleRelationService;
 
+    @Autowired
+    private RedisService redisService;
+
     @Override
     public UmsAdmin getUmsAdminByUsername(String username) {
-        // TODO 先从缓存中查找
-
+        // 先从缓存中查找
+        String key = RedisConstant.QUERY_ADMIN_INFO_KEY;
+        String adminJson = redisService.vGet(key);
+        if (StrUtil.isNotBlank(adminJson)) {
+            return JSONUtil.toBean(adminJson, UmsAdmin.class);
+        }
         // 从数据库中查询
         QueryWrapper<UmsAdmin> wrapper = new QueryWrapper<>();
         wrapper.eq("username", username);
         UmsAdmin admin = baseMapper.selectOne(wrapper);
         if (admin != null) {
-            // TODO 将用户数据入缓存
+            // 将用户数据入缓存
+            adminJson = JSONUtil.toJsonStr(admin);
+            redisService.vSet(key, adminJson, RedisConstant.QUERY_ADMIN_INFO_TIME, RedisConstant.QUERY_ADMIN_INFO_TIME_UNIT);
             return admin;
         }
         return null;
