@@ -67,7 +67,6 @@ public class UmsRoleController {
     public CommonResult updateById(@PathVariable("id") Long id, @RequestBody CreateRoleParam param) {
         UmsRole role = new UmsRole();
         BeanUtils.copyProperties(param, role);
-        role.setCreateTime(LocalDateTime.now());
         role.setId(id);
         boolean result = roleService.updateById(role);
         if (result) {
