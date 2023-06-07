@@ -40,6 +40,11 @@ public class UmsMenuController {
         UmsMenu menu = new UmsMenu();
         BeanUtils.copyProperties(param, menu);
         menu.setCreateTime(LocalDateTime.now());
+        if (menu.getParentId().equals(0L)) {
+            menu.setLevel(0);
+        } else {
+            menu.setLevel(1);
+        }
         boolean result = menuService.save(menu);
         if (result) {
             menuService.delCache();
@@ -62,6 +67,13 @@ public class UmsMenuController {
         UmsMenu menu = new UmsMenu();
         BeanUtils.copyProperties(param, menu);
         menu.setId(id);
+        if (menu.getParentId() != null) {
+            if (menu.getParentId().equals(0L)) {
+                menu.setLevel(0);
+            } else {
+                menu.setLevel(1);
+            }
+        }
         boolean result = menuService.updateById(menu);
         if (result) {
             menuService.delCache();

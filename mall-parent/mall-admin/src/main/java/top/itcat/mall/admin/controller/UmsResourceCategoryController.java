@@ -60,7 +60,7 @@ public class UmsResourceCategoryController {
         UmsResourceCategory category = new UmsResourceCategory();
         BeanUtils.copyProperties(param, category);
         category.setId(id);
-        boolean result = resourceCategoryService.save(category);
+        boolean result = resourceCategoryService.updateById(category);
         if (result) {
             return CommonResult.success("修改成功");
         }

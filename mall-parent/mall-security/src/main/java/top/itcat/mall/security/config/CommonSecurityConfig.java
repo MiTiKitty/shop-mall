@@ -49,6 +49,11 @@ public class CommonSecurityConfig {
         return new JwtAuthenticationTokenFilter();
     }
 
+    @Bean
+    public RateLimitInterceptor rateLimitInterceptor() {
+        return new RateLimitInterceptor();
+    }
+
     @ConditionalOnBean(name = "dynamicSecurityService")
     @Bean
     public DynamicAccessDecisionManager dynamicAccessDecisionManager() {

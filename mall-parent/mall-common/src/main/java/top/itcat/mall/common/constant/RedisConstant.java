@@ -74,7 +74,7 @@ public class RedisConstant {
     /**
      * 查询所有角色key
      */
-    public static final String QUERY_ROLE_ALL_KEY = "itcat:mall:qole:all";
+    public static final String QUERY_ROLE_ALL_KEY = "itcat:mall:role:all";
 
     /**
      * 查询所有角色存活时间
@@ -87,7 +87,17 @@ public class RedisConstant {
     public static final TimeUnit QUERY_ROLE_ALL_TIME_UNIT = TimeUnit.DAYS;
 
     /**
-     * 查询
+     * 查询角色菜单key前缀
      */
     public static final String QUERY_MENU_BY_ROLE_ID_KEY = "itcat:mall:menu:role:";
+
+    /**
+     * 查询角色菜单存活时间
+     */
+    public static final long QUERY_MENU_BY_ROLE_ID_TIME = 3L;
+
+    /**
+     * 查询角色菜单存活时间单位
+     */
+    public static final TimeUnit QUERY_MENU_BY_ROLE_ID_TIME_UNIT = TimeUnit.DAYS;
 }

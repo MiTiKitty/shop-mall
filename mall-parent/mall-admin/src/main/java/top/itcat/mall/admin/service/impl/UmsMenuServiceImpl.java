@@ -52,9 +52,9 @@ public class UmsMenuServiceImpl extends ServiceImpl<UmsMenuMapper, UmsMenu> impl
             return JSONUtil.toList(menuJson, UmsMenu.class);
         }
 
-        // 缓存中没有再去数据库中查找
+        // 缓存中没有再去数据库中查找,查找完成再入缓存
         List<UmsMenu> allList = baseMapper.selectListByRoleId(roleId);
-        redisService.vSet(key, JSONUtil.toJsonStr(allList));
+        redisService.vSet(key, JSONUtil.toJsonStr(allList), RedisConstant.QUERY_MENU_BY_ROLE_ID_TIME, RedisConstant.QUERY_MENU_BY_ROLE_ID_TIME_UNIT);
         return allList;
     }
 
@@ -135,6 +135,5 @@ public class UmsMenuServiceImpl extends ServiceImpl<UmsMenuMapper, UmsMenu> impl
         }
         redisService.del(keys);
     }
-
 
 }
