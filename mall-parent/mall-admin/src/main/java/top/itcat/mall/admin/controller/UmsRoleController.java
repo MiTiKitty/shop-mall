@@ -8,6 +8,8 @@ import top.itcat.mall.admin.dto.CreateRoleParam;
 import top.itcat.mall.admin.dto.DeleteRoleParam;
 import top.itcat.mall.admin.dto.UpdateRoleMenuParam;
 import top.itcat.mall.admin.dto.UpdateRoleResourceParam;
+import top.itcat.mall.admin.service.UmsMenuService;
+import top.itcat.mall.admin.service.UmsResourceService;
 import top.itcat.mall.admin.service.UmsRoleService;
 import top.itcat.mall.common.api.CommonPage;
 import top.itcat.mall.common.api.CommonResult;
@@ -34,6 +36,12 @@ public class UmsRoleController {
     @Autowired
     private UmsRoleService roleService;
 
+    @Autowired
+    private UmsMenuService menuService;
+
+    @Autowired
+    private UmsResourceService resourceService;
+
     /**
      * 添加新角色
      *
@@ -49,6 +57,7 @@ public class UmsRoleController {
         role.setAdminCount(0);
         boolean result = roleService.save(role);
         if (result) {
+            roleService.delCache();
             return CommonResult.success("添加成功");
         }
         return CommonResult.fail("添加失败");
@@ -70,6 +79,7 @@ public class UmsRoleController {
         role.setId(id);
         boolean result = roleService.updateById(role);
         if (result) {
+            roleService.delCache();
             return CommonResult.success("修改成功");
         }
         return CommonResult.fail("修改失败");
@@ -86,6 +96,7 @@ public class UmsRoleController {
     public CommonResult deleteByIds(@RequestBody @Validated DeleteRoleParam param) {
         Boolean result = roleService.removeRolesByIds(param.getIds());
         if (result) {
+            roleService.delCache();
             return CommonResult.success("删除成功");
         }
         return CommonResult.fail("删除失败");
@@ -138,6 +149,7 @@ public class UmsRoleController {
         umsRole.setStatus(status);
         boolean result = roleService.updateById(umsRole);
         if (result) {
+            roleService.delCache();
             return CommonResult.success("修改成功");
         }
         return CommonResult.fail("修改失败");
@@ -180,6 +192,7 @@ public class UmsRoleController {
     public CommonResult allocMenus(@RequestBody @Validated UpdateRoleMenuParam param) {
         Boolean result = roleService.allocMenus(param.getRoleId(), param.getMenuIds());
         if (result) {
+            menuService.delCacheByRoleId(param.getRoleId());
             return CommonResult.success("分配成功");
         }
         return CommonResult.fail("分配失败");
@@ -196,6 +209,7 @@ public class UmsRoleController {
     public CommonResult allocResources(@RequestBody @Validated UpdateRoleResourceParam param) {
         Boolean result = roleService.allocResources(param.getRoleId(), param.getResourceIds());
         if (result) {
+            resourceService.delCacheByRoleId(param.getRoleId());
             return CommonResult.success("分配成功");
         }
         return CommonResult.fail("分配失败");

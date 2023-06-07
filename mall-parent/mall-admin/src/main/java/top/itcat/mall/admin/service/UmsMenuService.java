@@ -68,4 +68,20 @@ public interface UmsMenuService extends IService<UmsMenu> {
      */
     void delCache();
 
+    /**
+     * 根据角色id删除缓存
+     *
+     * @param roleId
+     *         角色id
+     */
+    void delCacheByRoleId(Long roleId);
+
+    /**
+     * 根据角色id集合删除缓存
+     *
+     * @param roleIds
+     *         角色id集合
+     */
+    void delCacheByRoleIds(List<Long> roleIds);
+
 }

@@ -45,7 +45,17 @@ public class UmsMenuServiceImpl extends ServiceImpl<UmsMenuMapper, UmsMenu> impl
 
     @Override
     public List<UmsMenu> listByRoleId(Long roleId) {
-        return baseMapper.selectListByRoleId(roleId);
+        // 有缓存读缓存
+        String key = RedisConstant.QUERY_MENU_BY_ROLE_ID_KEY + roleId;
+        String menuJson = redisService.vGet(key);
+        if (StrUtil.isNotBlank(menuJson)) {
+            return JSONUtil.toList(menuJson, UmsMenu.class);
+        }
+
+        // 缓存中没有再去数据库中查找
+        List<UmsMenu> allList = baseMapper.selectListByRoleId(roleId);
+        redisService.vSet(key, JSONUtil.toJsonStr(allList));
+        return allList;
     }
 
     @Transactional(rollbackFor = Exception.class)
@@ -109,6 +119,22 @@ public class UmsMenuServiceImpl extends ServiceImpl<UmsMenuMapper, UmsMenu> impl
     @Override
     public void delCache() {
         // 删除树形结构的缓存
-        redisService.del(RedisConstant.QUERY_MENU_TREE_KEY);
+        redisService.del(RedisConstant.QUERY_MENU_TREE_KEY, RedisConstant.QUERY_MENU_BY_ROLE_ID_KEY + "*");
     }
+
+    @Override
+    public void delCacheByRoleId(Long roleId) {
+        redisService.del(RedisConstant.QUERY_MENU_BY_ROLE_ID_KEY + roleId);
+    }
+
+    @Override
+    public void delCacheByRoleIds(List<Long> roleIds) {
+        String[] keys = new String[roleIds.size()];
+        for (int i = 0; i < roleIds.size(); i++) {
+            keys[i] = RedisConstant.QUERY_MENU_BY_ROLE_ID_KEY + roleIds.get(i);
+        }
+        redisService.del(keys);
+    }
+
+
 }

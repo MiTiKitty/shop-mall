@@ -85,4 +85,9 @@ public class RedisConstant {
      * 查询所有角色存活时间单位
      */
     public static final TimeUnit QUERY_ROLE_ALL_TIME_UNIT = TimeUnit.DAYS;
+
+    /**
+     * 查询
+     */
+    public static final String QUERY_MENU_BY_ROLE_ID_KEY = "itcat:mall:menu:role:";
 }
