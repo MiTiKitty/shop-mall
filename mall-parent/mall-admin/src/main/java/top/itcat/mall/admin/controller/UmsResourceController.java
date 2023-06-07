@@ -95,6 +95,7 @@ public class UmsResourceController {
         boolean result = resourceService.save(resource);
         if (result) {
             dynamicSecurityMetadataSource.clearDataSource();
+            resourceService.delCache();
             return CommonResult.success("添加成功");
         }
         return CommonResult.fail("添加失败");
@@ -117,6 +118,7 @@ public class UmsResourceController {
         boolean result = resourceService.updateById(resource);
         if (result) {
             dynamicSecurityMetadataSource.clearDataSource();
+            resourceService.delCache();
             return CommonResult.success("修改成功");
         }
         return CommonResult.fail("修改失败");
@@ -134,6 +136,7 @@ public class UmsResourceController {
         Boolean result = resourceService.removeResourceById(id);
         if (result) {
             dynamicSecurityMetadataSource.clearDataSource();
+            resourceService.delCache();
             return CommonResult.success("删除成功");
         }
         return CommonResult.fail("删除失败");

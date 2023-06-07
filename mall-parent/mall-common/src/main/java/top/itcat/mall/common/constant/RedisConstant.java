@@ -70,4 +70,19 @@ public class RedisConstant {
      * 查询所有资源存活时间单位
      */
     public static final TimeUnit QUERY_RESOURCE_BY_ROLE_TIME_UNIT = TimeUnit.DAYS;
+
+    /**
+     * 查询所有角色key
+     */
+    public static final String QUERY_ROLE_ALL_KEY = "itcat:mall:qole:all";
+
+    /**
+     * 查询所有角色存活时间
+     */
+    public static final long QUERY_ROLE_ALL_TIME = 3L;
+
+    /**
+     * 查询所有角色存活时间单位
+     */
+    public static final TimeUnit QUERY_ROLE_ALL_TIME_UNIT = TimeUnit.DAYS;
 }

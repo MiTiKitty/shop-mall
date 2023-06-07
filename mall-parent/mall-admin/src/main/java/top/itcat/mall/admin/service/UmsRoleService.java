@@ -100,4 +100,15 @@ public interface UmsRoleService extends IService<UmsRole> {
      */
     Boolean allocResources(Long roleId, List<Long> resourceIds);
 
+    /**
+     * 获取所有角色
+     *
+     * @return 角色列表
+     */
+    List<UmsRole> listAll();
+
+    /**
+     * 删除缓存
+     */
+    void delCache();
 }

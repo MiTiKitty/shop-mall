@@ -2,6 +2,7 @@ package top.itcat.mall.admin.service.impl;
 
 import cn.hutool.core.collection.CollUtil;
 import cn.hutool.core.util.StrUtil;
+import cn.hutool.json.JSONUtil;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
@@ -12,6 +13,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import top.itcat.mall.admin.service.*;
 import top.itcat.mall.common.api.CommonPage;
+import top.itcat.mall.common.constant.RedisConstant;
+import top.itcat.mall.common.service.RedisService;
 import top.itcat.mall.entity.UmsMenu;
 import top.itcat.mall.entity.UmsResource;
 import top.itcat.mall.entity.UmsRole;
@@ -42,6 +45,9 @@ public class UmsRoleServiceImpl extends ServiceImpl<UmsRoleMapper, UmsRole> impl
 
     @Autowired
     private UmsRoleResourcesRelationService roleResourcesRelationService;
+
+    @Autowired
+    private RedisService redisService;
 
     @Override
     public List<UmsRole> listByAdminId(Long adminId) {
@@ -98,4 +104,26 @@ public class UmsRoleServiceImpl extends ServiceImpl<UmsRoleMapper, UmsRole> impl
         // 先删后加
         return roleResourcesRelationService.allocResources(roleId, resourceIds);
     }
+
+    @Override
+    public List<UmsRole> listAll() {
+        // 有缓存读缓存
+        String key = RedisConstant.QUERY_ROLE_ALL_KEY;
+        String json = redisService.vGet(key);
+        if (StrUtil.isNotBlank(json)) {
+            return JSONUtil.toList(json, UmsRole.class);
+        }
+
+        // 查库入缓存
+        List<UmsRole> list = list();
+        redisService.vSet(key, JSONUtil.toJsonStr(list), RedisConstant.QUERY_ROLE_ALL_TIME, RedisConstant.QUERY_ROLE_ALL_TIME_UNIT);
+        return list;
+    }
+
+    @Override
+    public void delCache() {
+        redisService.del(RedisConstant.QUERY_ROLE_ALL_KEY);
+    }
+
+
 }

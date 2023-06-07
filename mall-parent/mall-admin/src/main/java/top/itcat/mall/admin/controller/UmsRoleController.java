@@ -98,7 +98,7 @@ public class UmsRoleController {
      */
     @GetMapping("all")
     public CommonResult getAll() {
-        List<UmsRole> list = roleService.list();
+        List<UmsRole> list = roleService.listAll();
         return CommonResult.success(list);
     }
 
