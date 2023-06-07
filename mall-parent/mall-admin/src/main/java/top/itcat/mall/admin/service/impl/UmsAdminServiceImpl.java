@@ -75,7 +75,7 @@ public class UmsAdminServiceImpl extends ServiceImpl<UmsAdminMapper, UmsAdmin> i
     @Override
     public UmsAdmin getUmsAdminByUsername(String username) {
         // 先从缓存中查找
-        String key = RedisConstant.QUERY_ADMIN_INFO_KEY;
+        String key = RedisConstant.QUERY_ADMIN_INFO_KEY + username;
         String adminJson = redisService.vGet(key);
         if (StrUtil.isNotBlank(adminJson)) {
             return JSONUtil.toBean(adminJson, UmsAdmin.class);

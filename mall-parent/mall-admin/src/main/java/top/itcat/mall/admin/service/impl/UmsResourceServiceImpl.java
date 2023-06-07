@@ -1,15 +1,20 @@
 package top.itcat.mall.admin.service.impl;
 
 import cn.hutool.core.util.StrUtil;
+import cn.hutool.json.JSONUtil;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import top.itcat.mall.admin.service.UmsResourceService;
 import top.itcat.mall.common.api.CommonPage;
+import top.itcat.mall.common.constant.RedisConstant;
+import top.itcat.mall.common.service.RedisService;
 import top.itcat.mall.entity.UmsResource;
 import top.itcat.mall.mapper.UmsResourceMapper;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -23,9 +28,22 @@ import java.util.List;
 @Service
 public class UmsResourceServiceImpl extends ServiceImpl<UmsResourceMapper, UmsResource> implements UmsResourceService {
 
+    @Autowired
+    private RedisService redisService;
+
     @Override
     public List<UmsResource> listAll() {
-        return baseMapper.selectList(null);
+        // 有缓存读缓存
+        String key = RedisConstant.QUERY_RESOURCE_ALL_KEY;
+        String json = redisService.vGet(key);
+        if (StrUtil.isNotBlank(json)) {
+            return JSONUtil.toList(json, UmsResource.class);
+        }
+        // 查库，入缓存
+        List<UmsResource> resourceList = baseMapper.selectList(null);
+        json = JSONUtil.toJsonStr(resourceList);
+        redisService.vSet(key, json, RedisConstant.QUERY_RESOURCE_ALL_TIME, RedisConstant.QUERY_RESOURCE_ALL_TIME_UNIT);
+        return resourceList;
     }
 
     @Override
@@ -35,7 +53,17 @@ public class UmsResourceServiceImpl extends ServiceImpl<UmsResourceMapper, UmsRe
 
     @Override
     public List<UmsResource> listAllByRoleId(Long roleId) {
-        return baseMapper.selectListByRoleId(roleId);
+        // 有缓存查缓存
+        String key = RedisConstant.QUERY_RESOURCE_BY_ROLE_KEY + roleId;
+        String json = redisService.vGet(key);
+        if (StrUtil.isNotBlank(json)) {
+            return JSONUtil.toList(json, UmsResource.class);
+        }
+        // 查库，入缓存
+        List<UmsResource> resourceList = baseMapper.selectListByRoleId(roleId);
+        json = JSONUtil.toJsonStr(resourceList);
+        redisService.vSet(key, json, RedisConstant.QUERY_RESOURCE_BY_ROLE_TIME, RedisConstant.QUERY_RESOURCE_BY_ROLE_TIME_UNIT);
+        return resourceList;
     }
 
     @Override
@@ -67,5 +95,26 @@ public class UmsResourceServiceImpl extends ServiceImpl<UmsResourceMapper, UmsRe
     public Boolean removeResourceById(Long id) {
         // TODO 删除逻辑
         return null;
+    }
+
+    @Override
+    public void delCacheByRoleId(Long roleId) {
+        redisService.del(RedisConstant.QUERY_RESOURCE_BY_ROLE_KEY + roleId);
+    }
+
+    @Override
+    public void delCacheByRoleIds(List<Long> roleIds) {
+        String[] keys = new String[roleIds.size()];
+        int i = 0;
+        for (Long roleId : roleIds) {
+            keys[i++] = RedisConstant.QUERY_RESOURCE_BY_ROLE_KEY + roleId;
+        }
+        redisService.del(keys);
+    }
+
+    @Override
+    public void delCache() {
+        redisService.del(RedisConstant.QUERY_RESOURCE_ALL_KEY);
+        redisService.del(RedisConstant.QUERY_RESOURCE_BY_ROLE_KEY + "*");
     }
 }

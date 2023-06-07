@@ -70,4 +70,25 @@ public interface UmsResourceService extends IService<UmsResource> {
      * @return 成功与否
      */
     Boolean removeResourceById(Long id);
+
+    /**
+     * 根据角色id删缓存
+     *
+     * @param roleId
+     *         角色id
+     */
+    void delCacheByRoleId(Long roleId);
+
+    /**
+     * 根据角色id删缓存
+     *
+     * @param roleIds
+     *         角色id集合
+     */
+    void delCacheByRoleIds(List<Long> roleIds);
+
+    /**
+     * 删缓存
+     */
+    void delCache();
 }
