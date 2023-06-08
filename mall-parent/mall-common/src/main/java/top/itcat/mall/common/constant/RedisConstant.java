@@ -100,4 +100,19 @@ public class RedisConstant {
      * 查询角色菜单存活时间单位
      */
     public static final TimeUnit QUERY_MENU_BY_ROLE_ID_TIME_UNIT = TimeUnit.DAYS;
+
+    /**
+     * 查询所有商品品牌的key
+     */
+    public static final String QUERY_BRAND_ALL_KEY = "itcat:mall:brand:all";
+
+    /**
+     * 查询所有商品品牌存活时间
+     */
+    public static final long QUERY_BRAND_ALL_TIME = 5L;
+
+    /**
+     * 查询所有商品品牌存活时间单位
+     */
+    public static final TimeUnit QUERY_BRAND_ALL_TIME_UNIT = TimeUnit.DAYS;
 }
