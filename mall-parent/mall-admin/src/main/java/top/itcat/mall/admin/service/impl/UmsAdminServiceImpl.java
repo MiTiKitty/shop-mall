@@ -75,7 +75,7 @@ public class UmsAdminServiceImpl extends ServiceImpl<UmsAdminMapper, UmsAdmin> i
     @Override
     public UmsAdmin getUmsAdminByUsername(String username) {
         // 先从缓存中查找
-        String key = RedisConstant.QUERY_ADMIN_INFO_KEY + username;
+        String key = RedisConstant.QUERY_ADMIN_KEY + username;
         String adminJson = redisService.vGet(key);
         if (StrUtil.isNotBlank(adminJson)) {
             return JSONUtil.toBean(adminJson, UmsAdmin.class);
@@ -164,7 +164,14 @@ public class UmsAdminServiceImpl extends ServiceImpl<UmsAdminMapper, UmsAdmin> i
 
     @Override
     public AdminInfoVO getInfoByUsername(String username) {
-        // TODO 应该上缓存
+        // 有缓存读缓存
+        String key = RedisConstant.QUERY_ADMIN_INFO_KEY + username;
+        String adminJson = redisService.vGet(key);
+        if (StrUtil.isNotBlank(adminJson)) {
+            return JSONUtil.toBean(adminJson, AdminInfoVO.class);
+        }
+
+        // 查库
         UmsAdmin admin = getUmsAdminByUsername(username);
         List<UmsRole> umsRoles = roleService.listByAdminId(admin.getId());
         List<String> roles = umsRoles.stream().map(UmsRole::getName).collect(Collectors.toList());
@@ -174,6 +181,9 @@ public class UmsAdminServiceImpl extends ServiceImpl<UmsAdminMapper, UmsAdmin> i
         vo.setIcon(admin.getIcon());
         vo.setRoles(roles);
         vo.setMenus(menus);
+        // 将用户数据入缓存
+        adminJson = JSONUtil.toJsonStr(vo);
+        redisService.vSet(key, adminJson, RedisConstant.QUERY_ADMIN_INFO_TIME, RedisConstant.QUERY_ADMIN_INFO_TIME_UNIT);
         return vo;
     }
 
@@ -223,6 +233,9 @@ public class UmsAdminServiceImpl extends ServiceImpl<UmsAdminMapper, UmsAdmin> i
         umsAdmin.setId(admin.getId());
         umsAdmin.setPassword(passwordEncoder.encode(param.getNewPassword()));
         if (updateById(umsAdmin)) {
+            // 删除缓存
+            String key = RedisConstant.QUERY_ADMIN_KEY + admin.getUsername();
+            redisService.del(key);
             return 1;
         }
         return 0;
@@ -246,5 +259,16 @@ public class UmsAdminServiceImpl extends ServiceImpl<UmsAdminMapper, UmsAdmin> i
         String userAgentStr = "Browser: " + browser + ", OS: " + os;
         loginLog.setUserAgent(userAgentStr);
         loginLog.setIp(RequestUtil.getRequestIp(request));
+
+        // 更新用户最后登录时间
+        UmsAdmin updateAdmin = new UmsAdmin();
+        updateAdmin.setId(admin.getId());
+        updateAdmin.setLoginTime(loginLog.getCreateTime());
+        updateById(updateAdmin);
+
+        // 删除缓存
+        String key = RedisConstant.QUERY_ADMIN_KEY + admin.getUsername();
+        String infoKey = RedisConstant.QUERY_ADMIN_INFO_KEY + admin.getUsername();
+        redisService.del(key, infoKey);
     }
 }

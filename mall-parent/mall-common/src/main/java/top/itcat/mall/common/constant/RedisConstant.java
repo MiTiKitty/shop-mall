@@ -29,6 +29,11 @@ public class RedisConstant {
     /**
      * 查询用户信息key前缀
      */
+    public static final String QUERY_ADMIN_KEY = "itcat:mall:admin:account:";
+
+    /**
+     * 查询用户信息key前缀
+     */
     public static final String QUERY_ADMIN_INFO_KEY = "itcat:mall:admin:info:";
 
     /**
