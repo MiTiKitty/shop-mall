@@ -1,9 +1,11 @@
 package top.itcat.mall.admin.service.impl;
 
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import top.itcat.mall.admin.service.UmsResourceService;
@@ -24,6 +26,7 @@ import java.util.List;
 @Service
 public class UmsRoleResourcesRelationServiceImpl extends ServiceImpl<UmsRoleResourceRelationMapper, UmsRoleResourceRelation> implements UmsRoleResourcesRelationService {
 
+    @Lazy
     @Autowired
     private UmsResourceService resourceService;
 
@@ -42,5 +45,11 @@ public class UmsRoleResourcesRelationServiceImpl extends ServiceImpl<UmsRoleReso
         }
         resourceService.delCacheByRoleId(roleId);
         return count == resourceIds.size();
+    }
+
+    @Override
+    public boolean delByResourceId(Long resourceId) {
+        return remove(new LambdaQueryWrapper<UmsRoleResourceRelation>()
+                .eq(UmsRoleResourceRelation::getResourceId, resourceId));
     }
 }

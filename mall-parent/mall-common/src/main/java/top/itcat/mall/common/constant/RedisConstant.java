@@ -115,4 +115,44 @@ public class RedisConstant {
      * 查询所有商品品牌存活时间单位
      */
     public static final TimeUnit QUERY_BRAND_ALL_TIME_UNIT = TimeUnit.DAYS;
+
+    /**
+     * 查询商品分类树key
+     */
+    public static final String QUERY_PRODUCT_CATEGORY_TREE_KEY = "itcat:mall:product:category:tree";
+
+    /**
+     * 查询商品分类树存活时间
+     */
+    public static final Long QUERY_PRODUCT_CATEGORY_TREE_TIME = 7L;
+
+    /**
+     * 查询商品分类树存活时间单位
+     */
+    public static final TimeUnit QUERY_PRODUCT_CATEGORY_TREE_TIME_UNIT = TimeUnit.DAYS;
+
+    /**
+     * 根据商品属性分类id查询商品属性key
+     */
+    public static final String QUERY_PRODUCT_ATTR_INFO_BY_PID_KEY = "itcat:mall:product:attributes:";
+
+    /**
+     * 根据商品属性分类id查询商品属性存活时间单位
+     */
+    public static final TimeUnit QUERY_PRODUCT_ATTR_INFO_BY_PID_TIME_UNIT = TimeUnit.SECONDS;
+
+    /**
+     * 查询所有分类及其属性列表key
+     */
+    public static final String QUERY_PRODUCT_ATTR_CATEGORY_KEY = "itcat:mall:attribute:category:all";
+
+    /**
+     * 查询所有分类及其属性列表存活时间
+     */
+    public static final Long QUERY_PRODUCT_ATTR_CATEGORY_TIME = 1L;
+
+    /**
+     * 查询所有分类及其属性列表存活时间单位
+     */
+    public static final TimeUnit QUERY_PRODUCT_ATTR_CATEGORY_TIME_UNIT = TimeUnit.DAYS;
 }

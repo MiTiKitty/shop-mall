@@ -6,8 +6,11 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import top.itcat.mall.admin.service.UmsResourceService;
+import top.itcat.mall.admin.service.UmsRoleResourcesRelationService;
 import top.itcat.mall.common.api.CommonPage;
 import top.itcat.mall.common.constant.RedisConstant;
 import top.itcat.mall.common.service.RedisService;
@@ -30,6 +33,10 @@ public class UmsResourceServiceImpl extends ServiceImpl<UmsResourceMapper, UmsRe
 
     @Autowired
     private RedisService redisService;
+
+    @Lazy
+    @Autowired
+    private UmsRoleResourcesRelationService roleResourcesRelationService;
 
     @Override
     public List<UmsResource> listAll() {
@@ -91,10 +98,19 @@ public class UmsResourceServiceImpl extends ServiceImpl<UmsResourceMapper, UmsRe
         return new CommonPage<>(pageNum, pageSize, (int) page.getPages(), page.getTotal(), vos);
     }
 
+    @Transactional(rollbackFor = Exception.class)
     @Override
     public Boolean removeResourceById(Long id) {
-        // TODO 删除逻辑
-        return null;
+        // 先删自己
+        int delete = baseMapper.deleteById(id);
+        if (delete == 0) {
+            return false;
+        }
+
+        // 资源删除了，还需要将角色资源关系进行清理
+        boolean result = roleResourcesRelationService.delByResourceId(id);
+        delCache();
+        return result;
     }
 
     @Override

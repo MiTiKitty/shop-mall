@@ -73,6 +73,7 @@ public class PmsBrandServiceImpl extends ServiceImpl<PmsBrandMapper, PmsBrand> i
         if (showStatus!= null) {
             wrapper.and(e -> e.eq("show_status", showStatus));
         }
+        wrapper.orderByDesc("sort");
         Page<PmsBrand> page = new Page<>(pageNum, pageSize);
         page(page, wrapper);
         List<PmsBrand> vos = page.getRecords();

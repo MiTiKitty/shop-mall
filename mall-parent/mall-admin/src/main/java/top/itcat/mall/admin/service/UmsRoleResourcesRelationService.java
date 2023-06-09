@@ -24,4 +24,13 @@ public interface UmsRoleResourcesRelationService extends IService<UmsRoleResourc
      * @return 成功与否
      */
     Boolean allocResources(Long roleId, List<Long> resourceIds);
+
+    /**
+     * 根据资源id删除角色资源联系
+     *
+     * @param resourceId
+     *         资源id
+     * @return 成功与否
+     */
+    boolean delByResourceId(Long resourceId);
 }

@@ -24,4 +24,13 @@ public interface UmsRoleMenuRelationService extends IService<UmsRoleMenuRelation
      * @return 成功与否
      */
     Boolean allocMenus(Long roleId, List<Long> menuIds);
+
+    /**
+     * 根据菜单id删除角色菜单联系
+     *
+     * @param menuId
+     *         菜单id
+     * @return 吃个饭有
+     */
+    boolean delByMenuId(Long menuId);
 }

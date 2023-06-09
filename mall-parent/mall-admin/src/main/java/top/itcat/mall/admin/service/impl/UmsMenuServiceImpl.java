@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import top.itcat.mall.admin.service.UmsMenuService;
+import top.itcat.mall.admin.service.UmsRoleMenuRelationService;
 import top.itcat.mall.admin.vo.UmsMenuNode;
 import top.itcat.mall.common.api.CommonPage;
 import top.itcat.mall.common.constant.RedisConstant;
@@ -38,6 +39,9 @@ public class UmsMenuServiceImpl extends ServiceImpl<UmsMenuMapper, UmsMenu> impl
     @Autowired
     private RedisService redisService;
 
+    @Autowired
+    private UmsRoleMenuRelationService relationService;
+
     @Override
     public List<UmsMenu> listByAdminId(Long adminId) {
         return baseMapper.selectListByAdminId(adminId);
@@ -61,9 +65,13 @@ public class UmsMenuServiceImpl extends ServiceImpl<UmsMenuMapper, UmsMenu> impl
     @Transactional(rollbackFor = Exception.class)
     @Override
     public boolean removeMenuById(Long id) {
-        // TODO 删除逻辑
+        // 先删自己
+        int delete = baseMapper.deleteById(id);
 
-        return false;
+        // 再删角色菜单联系
+        boolean result = relationService.delByMenuId(id);
+        delCache();
+        return result;
     }
 
     @Override

@@ -3,6 +3,7 @@ package top.itcat.mall.admin.service.impl;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import top.itcat.mall.admin.service.UmsResourceCategoryService;
 import top.itcat.mall.entity.UmsResourceCategory;
 import top.itcat.mall.mapper.UmsResourceCategoryMapper;
@@ -17,9 +18,12 @@ import top.itcat.mall.mapper.UmsResourceCategoryMapper;
 @Slf4j
 @Service
 public class UmsResourceCategoryServiceImpl extends ServiceImpl<UmsResourceCategoryMapper, UmsResourceCategory> implements UmsResourceCategoryService {
+
+    @Transactional(rollbackFor = Exception.class)
     @Override
     public Boolean removeCategoryById(Long id) {
-        // TODO 删除逻辑
-        return null;
+        // 先删自己
+        int delete = baseMapper.deleteById(id);
+        return delete > 0;
     }
 }

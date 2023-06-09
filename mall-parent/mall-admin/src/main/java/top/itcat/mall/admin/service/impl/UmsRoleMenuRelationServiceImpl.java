@@ -1,5 +1,6 @@
 package top.itcat.mall.admin.service.impl;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import lombok.extern.slf4j.Slf4j;
@@ -38,5 +39,12 @@ public class UmsRoleMenuRelationServiceImpl extends ServiceImpl<UmsRoleMenuRelat
             count += baseMapper.insert(relation);
         }
         return count == menuIds.size();
+    }
+
+    @Override
+    public boolean delByMenuId(Long menuId) {
+        UpdateWrapper<UmsRoleMenuRelation> wrapper = new UpdateWrapper<>();
+        wrapper.eq("menu_id", menuId);
+        return remove(wrapper);
     }
 }
