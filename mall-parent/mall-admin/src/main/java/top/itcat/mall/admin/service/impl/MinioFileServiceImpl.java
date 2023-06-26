@@ -2,6 +2,7 @@ package top.itcat.mall.admin.service.impl;
 
 import cn.hutool.json.JSONUtil;
 import io.minio.*;
+import io.minio.errors.*;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -9,6 +10,10 @@ import org.springframework.web.multipart.MultipartFile;
 import top.itcat.mall.admin.service.FileService;
 import top.itcat.mall.admin.vo.MinioFileVO;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.security.InvalidKeyException;
+import java.security.NoSuchAlgorithmException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -40,11 +45,13 @@ public class MinioFileServiceImpl implements FileService {
 
     @Override
     public Object upload(MultipartFile file) {
+        InputStream in = null;
         try {
+            in = file.getInputStream();
             //创建一个MinIO的Java客户端
-            MinioClient minioClient =MinioClient.builder()
+            MinioClient minioClient = MinioClient.builder()
                     .endpoint(ENDPOINT)
-                    .credentials(ACCESS_KEY,SECRET_KEY)
+                    .credentials(ACCESS_KEY, SECRET_KEY)
                     .build();
             boolean isExist = minioClient.bucketExists(BucketExistsArgs.builder().bucket(BUCKET_NAME).build());
             if (!isExist) {
@@ -59,16 +66,25 @@ public class MinioFileServiceImpl implements FileService {
                     .bucket(BUCKET_NAME)
                     .object(objectName)
                     .contentType(file.getContentType())
-                    .stream(file.getInputStream(), file.getSize(), ObjectWriteArgs.MIN_MULTIPART_SIZE).build();
+                    .stream(in, file.getSize(), ObjectWriteArgs.MIN_MULTIPART_SIZE).build();
             minioClient.putObject(putObjectArgs);
             log.info("文件上传成功!");
             MinioFileVO vo = new MinioFileVO();
             vo.setName(filename);
             vo.setUrl(baseUrl + "/" + BUCKET_NAME + "/" + objectName);
             return vo;
-        } catch (Exception e) {
+        } catch (IOException | XmlParserException | InternalException | ErrorResponseException | InvalidResponseException | InvalidKeyException | InsufficientDataException | NoSuchAlgorithmException | ServerException e) {
             e.printStackTrace();
             log.info("上传发生错误: {}！", e.getMessage());
+        } finally {
+            try {
+                // 关闭流
+                if (in != null) {
+                    in.close();
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
         return null;
     }
@@ -78,7 +94,7 @@ public class MinioFileServiceImpl implements FileService {
         try {
             MinioClient minioClient = MinioClient.builder()
                     .endpoint(ENDPOINT)
-                    .credentials(ACCESS_KEY,SECRET_KEY)
+                    .credentials(ACCESS_KEY, SECRET_KEY)
                     .build();
             minioClient.removeObject(RemoveObjectArgs.builder().bucket(BUCKET_NAME).object(name).build());
             return true;
