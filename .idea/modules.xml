@@ -2,6 +2,11 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/mall-parent/mall-admin/mall-admin.iml" filepath="$PROJECT_DIR$/mall-parent/mall-admin/mall-admin.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mall-parent/mall-common/mall-common.iml" filepath="$PROJECT_DIR$/mall-parent/mall-common/mall-common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mall-parent/mall-mbg/mall-mbg.iml" filepath="$PROJECT_DIR$/mall-parent/mall-mbg/mall-mbg.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mall-parent/mall-parent.iml" filepath="$PROJECT_DIR$/mall-parent/mall-parent.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mall-parent/mall-security/mall-security.iml" filepath="$PROJECT_DIR$/mall-parent/mall-security/mall-security.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/shop-mall.iml" filepath="$PROJECT_DIR$/.idea/shop-mall.iml" />
     </modules>
   </component>
