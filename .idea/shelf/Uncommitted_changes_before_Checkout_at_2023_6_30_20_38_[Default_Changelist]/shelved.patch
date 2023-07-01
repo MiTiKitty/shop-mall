@@ -1,0 +1,37 @@
+Index: mall-parent/mall-admin/src/main/java/top/itcat/mall/admin/config/MyWebMvcConfig.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package top.itcat.mall.admin.config;\r\n\r\nimport org.springframework.beans.factory.annotation.Autowired;\r\nimport org.springframework.context.annotation.Configuration;\r\nimport org.springframework.web.servlet.config.annotation.InterceptorRegistry;\r\nimport org.springframework.web.servlet.config.annotation.WebMvcConfigurer;\r\nimport top.itcat.mall.security.component.RateLimitInterceptor;\r\n\r\n/**\r\n * @className: MyWebMvcConfig <br/>\r\n * @description: webMvc配置类 <br/>\r\n * @author: CatKitty 33641 <br/>\r\n * @date: 2023/05/27 <br/>\r\n * @version: 1.0.0 <br/>\r\n */\r\n@Configuration\r\npublic class MyWebMvcConfig implements WebMvcConfigurer {\r\n\r\n    @Autowired\r\n    private RateLimitInterceptor rateLimitInterceptor;\r\n\r\n    @Override\r\n    public void addInterceptors(InterceptorRegistry registry) {\r\n        registry.addInterceptor(rateLimitInterceptor).addPathPatterns(\"/**\");\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- mall-parent/mall-admin/src/main/java/top/itcat/mall/admin/config/MyWebMvcConfig.java	(revision 5c6b930e9bf03be4695e3534765dda5e1ff5c4ec)
++++ mall-parent/mall-admin/src/main/java/top/itcat/mall/admin/config/MyWebMvcConfig.java	(date 1687855684009)
+@@ -6,6 +6,8 @@
+ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+ import top.itcat.mall.security.component.RateLimitInterceptor;
+ 
++import javax.annotation.PostConstruct;
++
+ /**
+  * @className: MyWebMvcConfig <br/>
+  * @description: webMvc配置类 <br/>
+Index: mall-parent/mall-security/src/main/java/top/itcat/mall/security/annotation/CacheException.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package top.itcat.mall.security.annotation;\r\n\r\nimport java.lang.annotation.*;\r\n\r\n/**\r\n * @className: CacheException <br/>\r\n * @description: 缓存异常注解 <br/>\r\n * @author: CatKitty 33641 <br/>\r\n * @date: 2023/06/04 <br/>\r\n * @version: 1.0.0 <br/>\r\n */\r\n@Documented\r\n@Target(ElementType.METHOD)\r\n@Retention(RetentionPolicy.RUNTIME)\r\npublic @interface CacheException {\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- mall-parent/mall-security/src/main/java/top/itcat/mall/security/annotation/CacheException.java	(revision 5c6b930e9bf03be4695e3534765dda5e1ff5c4ec)
++++ mall-parent/mall-security/src/main/java/top/itcat/mall/security/annotation/CacheException.java	(date 1687788507736)
+@@ -3,8 +3,7 @@
+ import java.lang.annotation.*;
+ 
+ /**
+- * @className: CacheException <br/>
+- * @description: 缓存异常注解 <br/>
++ * @className: CacheException <br/> * @description: 缓存异常注解 <br/>
+  * @author: CatKitty 33641 <br/>
+  * @date: 2023/06/04 <br/>
+  * @version: 1.0.0 <br/>

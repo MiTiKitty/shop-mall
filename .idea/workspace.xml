@@ -1,0 +1,575 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="BRANCH:main" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </select>
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="b2459b91-c0c6-4a14-8f21-3a02d88d7453" name="Default Changelist" comment="完善文件上传出现删除临时文件异常的错误" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="AnnotationType" />
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="cat-dev" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RESET_MODE" value="MIXED" />
+  </component>
+  <component name="ProjectId" id="2QjLlyD5G1u81I7zowIdTVnA4uL" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+    <option name="showMembers" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="DatabaseDriversLRU" value="mysql" />
+    <property name="RequestMappingsPanelOrder0" value="0" />
+    <property name="RequestMappingsPanelOrder1" value="1" />
+    <property name="RequestMappingsPanelWidth0" value="75" />
+    <property name="RequestMappingsPanelWidth1" value="75" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/mall-parent/mall-admin/src/main/java/top/itcat/mall/admin/service/impl" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="project.structure.last.edited" value="Libraries" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.27931035" />
+    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors" />
+  </component>
+  <component name="ReactorSettings">
+    <option name="notificationShown" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\shop-mall\mall-parent\mall-mbg\src\main\java\top\itcat\mall" />
+    </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="top.itcat.mall" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="top.itcat.mall.admin.config" />
+      <recent name="top.itcat.mall.security.component" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\shop-mall\mall-parent\mall-admin\src\main\java\top\itcat\mall\admin\service\impl" />
+      <recent name="D:\shop-mall\mall-parent\mall-admin\src\main\java\top\itcat\mall\admin\service" />
+      <recent name="D:\shop-mall\mall-parent\mall-admin\src\main\resources" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Application.Generator">
+    <configuration name="Generator" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="top.itcat.mall.Generator" />
+      <module name="mall-mbg" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="top.itcat.mall.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Generator" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="top.itcat.mall.Generator" />
+      <module name="mall-mbg" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="top.itcat.mall.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CatAdminTest.addSuperAdmin" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="mall-admin" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="top.itcat.mall.admin.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="top.itcat.mall.admin" />
+      <option name="MAIN_CLASS_NAME" value="top.itcat.mall.admin.CatAdminTest" />
+      <option name="METHOD_NAME" value="addSuperAdmin" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MallAdminApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+      <module name="mall-admin" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="top.itcat.mall.admin.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="SPRING_BOOT_MAIN_CLASS" value="top.itcat.mall.admin.MallAdminApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="lua.app" factoryName="Lua Application">
+      <option name="program" value="lua.exe" />
+      <option name="file" value="" />
+      <option name="workingDir" value="$PROJECT_DIR$/mall-parent/src/main/java" />
+      <option name="debuggerType" value="1" />
+      <option name="params" value="" />
+      <option name="charset" value="UTF-8" />
+      <option name="showConsole" value="true" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Spring Boot.MallAdminApplication" />
+        <item itemvalue="JUnit.CatAdminTest.addSuperAdmin" />
+        <item itemvalue="Application.Generator" />
+        <item itemvalue="Spring Boot.MallAdminApplication" />
+        <item itemvalue="JUnit.CatAdminTest.addSuperAdmin" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="b2459b91-c0c6-4a14-8f21-3a02d88d7453" name="Default Changelist" comment="" />
+      <created>1685862199046</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1685862199046</updated>
+      <workItem from="1685862204041" duration="2768000" />
+      <workItem from="1685864987184" duration="3011000" />
+      <workItem from="1685870116633" duration="14124000" />
+      <workItem from="1685890523545" duration="225000" />
+      <workItem from="1685928005416" duration="40634000" />
+      <workItem from="1686017863696" duration="21834000" />
+      <workItem from="1686097932718" duration="11646000" />
+      <workItem from="1686121181119" duration="99000" />
+      <workItem from="1686199748472" duration="26890000" />
+      <workItem from="1686286399511" duration="4642000" />
+      <workItem from="1686462076223" duration="2930000" />
+      <workItem from="1687173568604" duration="24000" />
+      <workItem from="1687174503517" duration="623000" />
+      <workItem from="1687356517959" duration="85000" />
+      <workItem from="1687745420640" duration="4824000" />
+      <workItem from="1687757796718" duration="78000" />
+      <workItem from="1687759266755" duration="577000" />
+      <workItem from="1687760917059" duration="605000" />
+      <workItem from="1687786877447" duration="778000" />
+      <workItem from="1687843763458" duration="159000" />
+      <workItem from="1687846488282" duration="800000" />
+      <workItem from="1687855190894" duration="490000" />
+      <workItem from="1687919179709" duration="325000" />
+      <workItem from="1687930421563" duration="332000" />
+      <workItem from="1688004658167" duration="12000" />
+      <workItem from="1688105077577" duration="178000" />
+      <workItem from="1688128428241" duration="984000" />
+    </task>
+    <task id="LOCAL-00001" summary="初始化项目，搭建好mapper和通用模块，开启security模块">
+      <created>1685888278152</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1685888278152</updated>
+    </task>
+    <task id="LOCAL-00002" summary="搭建好jwt和一些简单的配置部分">
+      <created>1685889981442</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1685889981442</updated>
+    </task>
+    <task id="LOCAL-00003" summary="搭建完成安全认证模块">
+      <created>1685933253224</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1685933253224</updated>
+    </task>
+    <task id="LOCAL-00004" summary="搭建admin模块基本骨架">
+      <created>1685940397351</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1685940397351</updated>
+    </task>
+    <task id="LOCAL-00005" summary="搭建admin模块基本骨架-1">
+      <created>1685942699830</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1685942699830</updated>
+    </task>
+    <task id="LOCAL-00006" summary="修复aop报错部分">
+      <created>1685953423511</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1685953423511</updated>
+    </task>
+    <task id="LOCAL-00007" summary="完成用户注册功能">
+      <created>1685953440552</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1685953440552</updated>
+    </task>
+    <task id="LOCAL-00008" summary="完成用户使用用户名和密码登录功能">
+      <created>1685955384312</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1685955384312</updated>
+    </task>
+    <task id="LOCAL-00009" summary="完成用户刷新token和获取当前登录用户信息功能">
+      <created>1685968354735</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1685968354735</updated>
+    </task>
+    <task id="LOCAL-00010" summary="完成用户登出功能">
+      <created>1685968582140</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1685968582140</updated>
+    </task>
+    <task id="LOCAL-00011" summary="完成分页查询用户列表功能">
+      <created>1685969972391</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1685969972391</updated>
+    </task>
+    <task id="LOCAL-00012" summary="完成用户后台管理相关功能">
+      <created>1685973933151</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1685973933151</updated>
+    </task>
+    <task id="LOCAL-00013" summary="完成角色后台管理相关基本功能">
+      <created>1685979317693</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1685979317693</updated>
+    </task>
+    <task id="LOCAL-00014" summary="完成菜单后台管理相关基本功能">
+      <created>1686025254916</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1686025254916</updated>
+    </task>
+    <task id="LOCAL-00015" summary="完成后台资源分类管理相关基本功能">
+      <created>1686027195507</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1686027195507</updated>
+    </task>
+    <task id="LOCAL-00016" summary="完成后台资源管理相关基本功能">
+      <created>1686029482422</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1686029482422</updated>
+    </task>
+    <task id="LOCAL-00017" summary="添加用户缓存">
+      <created>1686057353604</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1686057353604</updated>
+    </task>
+    <task id="LOCAL-00018" summary="添加资源缓存">
+      <created>1686098853947</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1686098853947</updated>
+    </task>
+    <task id="LOCAL-00019" summary="添加角色缓存">
+      <created>1686103624294</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1686103624294</updated>
+    </task>
+    <task id="LOCAL-00020" summary="添加菜单缓存">
+      <created>1686112410505</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1686112410505</updated>
+    </task>
+    <task id="LOCAL-00021" summary="添加限流器，目前限流所有请求，限流策略：1500ms内一个ip最多访问同一个请求5次">
+      <created>1686119626465</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1686119626465</updated>
+    </task>
+    <task id="LOCAL-00022" summary="完成商品品牌管理的基本功能">
+      <created>1686204212728</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1686204212728</updated>
+    </task>
+    <task id="LOCAL-00023" summary="完成商品属性分类、属性、分类管理的基本功能">
+      <created>1686289837063</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1686289837063</updated>
+    </task>
+    <task id="LOCAL-00024" summary="完善用户最后登录时间">
+      <created>1686290648292</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1686290648292</updated>
+    </task>
+    <task id="LOCAL-00025" summary="实现minio文件上传服务">
+      <created>1686467542205</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1686467542205</updated>
+    </task>
+    <task id="LOCAL-00026" summary="完善文件上传出现删除临时文件异常的错误">
+      <created>1687752359125</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1687752359125</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="2" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="main" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="RECENT_FILTERS">
+      <map>
+        <entry key="Branch">
+          <value>
+            <list>
+              <RecentGroup>
+                <option name="FILTER_VALUES">
+                  <option value="HEAD" />
+                </option>
+              </RecentGroup>
+            </list>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="搭建好jwt和一些简单的配置部分" />
+    <MESSAGE value="搭建完成安全认证模块" />
+    <MESSAGE value="搭建admin模块基本骨架" />
+    <MESSAGE value="搭建admin模块基本骨架-1" />
+    <MESSAGE value="修复aop报错部分" />
+    <MESSAGE value="完成用户注册功能" />
+    <MESSAGE value="完成用户使用用户名和密码登录功能" />
+    <MESSAGE value="完成用户刷新token和获取当前登录用户信息功能" />
+    <MESSAGE value="完成用户登出功能" />
+    <MESSAGE value="完成分页查询用户列表功能" />
+    <MESSAGE value="完成用户后台管理相关功能" />
+    <MESSAGE value="完成角色后台管理相关基本功能" />
+    <MESSAGE value="完成菜单后台管理相关基本功能" />
+    <MESSAGE value="完成后台资源分类管理相关基本功能" />
+    <MESSAGE value="完成后台资源管理相关基本功能" />
+    <MESSAGE value="添加用户缓存" />
+    <MESSAGE value="添加资源缓存" />
+    <MESSAGE value="添加角色缓存" />
+    <MESSAGE value="添加菜单缓存" />
+    <MESSAGE value="添加限流器，目前限流所有请求，限流策略：1500ms内一个ip最多访问同一个请求5次" />
+    <MESSAGE value="完成商品品牌管理的基本功能" />
+    <MESSAGE value="完成商品属性分类、属性、分类管理的基本功能" />
+    <MESSAGE value="完善用户最后登录时间" />
+    <MESSAGE value="实现minio文件上传服务" />
+    <MESSAGE value="完善文件上传出现删除临时文件异常的错误" />
+    <option name="LAST_COMMIT_MESSAGE" value="完善文件上传出现删除临时文件异常的错误" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="223" y="87" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1685944046432">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state x="223" y="87" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.864/-1920.0.1280.720@0.0.1536.864" timestamp="1685944046432" />
+    <state x="574" y="138" key="#com.intellij.ide.util.MemberChooser" timestamp="1686466508812">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state x="574" y="138" key="#com.intellij.ide.util.MemberChooser/0.0.1536.864/-1920.0.1280.720@0.0.1536.864" timestamp="1686466508812" />
+    <state x="574" y="138" key="#com.intellij.ide.util.MemberChooser/0.0.1536.864@0.0.1536.864" timestamp="1686112117250" />
+    <state x="498" y="221" key="#com.intellij.ide.util.TreeClassChooserDialog" timestamp="1685878071178">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state x="498" y="221" key="#com.intellij.ide.util.TreeClassChooserDialog/0.0.1536.864/-1920.0.1280.720@0.0.1536.864" timestamp="1685878071178" />
+    <state x="388" y="110" key="#com.intellij.ide.util.frameworkSupport.AddFrameworkSupportDialog" timestamp="1685869915462">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state x="388" y="110" key="#com.intellij.ide.util.frameworkSupport.AddFrameworkSupportDialog/0.0.1536.864/-1920.0.1280.720@0.0.1536.864" timestamp="1685869915462" />
+    <state x="530" y="299" width="476" height="272" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1685878641928">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state x="530" y="299" width="476" height="272" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.1536.864/-1920.0.1280.720@0.0.1536.864" timestamp="1685878641928" />
+    <state width="1493" height="250" key="GridCell.Tab.0.bottom" timestamp="1687855684015">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state width="1493" height="251" key="GridCell.Tab.0.bottom/0.0.1536.864/-1920.0.1280.720@0.0.1536.864" timestamp="1686468245306" />
+    <state width="1493" height="250" key="GridCell.Tab.0.bottom/0.0.1536.864@0.0.1536.864" timestamp="1687855684015" />
+    <state width="1493" height="250" key="GridCell.Tab.0.center" timestamp="1687855684015">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state width="1493" height="251" key="GridCell.Tab.0.center/0.0.1536.864/-1920.0.1280.720@0.0.1536.864" timestamp="1686468245306" />
+    <state width="1493" height="250" key="GridCell.Tab.0.center/0.0.1536.864@0.0.1536.864" timestamp="1687855684015" />
+    <state width="1493" height="250" key="GridCell.Tab.0.left" timestamp="1687855684015">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state width="1493" height="251" key="GridCell.Tab.0.left/0.0.1536.864/-1920.0.1280.720@0.0.1536.864" timestamp="1686468245305" />
+    <state width="1493" height="250" key="GridCell.Tab.0.left/0.0.1536.864@0.0.1536.864" timestamp="1687855684015" />
+    <state width="1493" height="250" key="GridCell.Tab.0.right" timestamp="1687855684015">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state width="1493" height="251" key="GridCell.Tab.0.right/0.0.1536.864/-1920.0.1280.720@0.0.1536.864" timestamp="1686468245306" />
+    <state width="1493" height="250" key="GridCell.Tab.0.right/0.0.1536.864@0.0.1536.864" timestamp="1687855684015" />
+    <state width="1493" height="250" key="GridCell.Tab.1.bottom" timestamp="1687855684016">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state width="1493" height="251" key="GridCell.Tab.1.bottom/0.0.1536.864/-1920.0.1280.720@0.0.1536.864" timestamp="1686468245306" />
+    <state width="1493" height="250" key="GridCell.Tab.1.bottom/0.0.1536.864@0.0.1536.864" timestamp="1687855684016" />
+    <state width="1493" height="250" key="GridCell.Tab.1.center" timestamp="1687855684015">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state width="1493" height="251" key="GridCell.Tab.1.center/0.0.1536.864/-1920.0.1280.720@0.0.1536.864" timestamp="1686468245306" />
+    <state width="1493" height="250" key="GridCell.Tab.1.center/0.0.1536.864@0.0.1536.864" timestamp="1687855684015" />
+    <state width="1493" height="250" key="GridCell.Tab.1.left" timestamp="1687855684015">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state width="1493" height="251" key="GridCell.Tab.1.left/0.0.1536.864/-1920.0.1280.720@0.0.1536.864" timestamp="1686468245306" />
+    <state width="1493" height="250" key="GridCell.Tab.1.left/0.0.1536.864@0.0.1536.864" timestamp="1687855684015" />
+    <state width="1493" height="250" key="GridCell.Tab.1.right" timestamp="1687855684015">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state width="1493" height="251" key="GridCell.Tab.1.right/0.0.1536.864/-1920.0.1280.720@0.0.1536.864" timestamp="1686468245306" />
+    <state width="1493" height="250" key="GridCell.Tab.1.right/0.0.1536.864@0.0.1536.864" timestamp="1687855684015" />
+    <state width="1493" height="273" key="GridCell.Tab.2.bottom" timestamp="1686287770837">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state width="1493" height="273" key="GridCell.Tab.2.bottom/0.0.1536.864/-1920.0.1280.720@0.0.1536.864" timestamp="1686287770837" />
+    <state width="1493" height="274" key="GridCell.Tab.2.bottom/0.0.1536.864@0.0.1536.864" timestamp="1686119955192" />
+    <state width="1493" height="273" key="GridCell.Tab.2.center" timestamp="1686287770837">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state width="1493" height="273" key="GridCell.Tab.2.center/0.0.1536.864/-1920.0.1280.720@0.0.1536.864" timestamp="1686287770837" />
+    <state width="1493" height="274" key="GridCell.Tab.2.center/0.0.1536.864@0.0.1536.864" timestamp="1686119955192" />
+    <state width="1493" height="273" key="GridCell.Tab.2.left" timestamp="1686287770837">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state width="1493" height="273" key="GridCell.Tab.2.left/0.0.1536.864/-1920.0.1280.720@0.0.1536.864" timestamp="1686287770837" />
+    <state width="1493" height="274" key="GridCell.Tab.2.left/0.0.1536.864@0.0.1536.864" timestamp="1686119955192" />
+    <state width="1493" height="273" key="GridCell.Tab.2.right" timestamp="1686287770837">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state width="1493" height="273" key="GridCell.Tab.2.right/0.0.1536.864/-1920.0.1280.720@0.0.1536.864" timestamp="1686287770837" />
+    <state width="1493" height="274" key="GridCell.Tab.2.right/0.0.1536.864@0.0.1536.864" timestamp="1686119955192" />
+    <state x="249" y="7" key="SettingsEditor" timestamp="1687759418702">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state x="249" y="7" key="SettingsEditor/0.0.1536.864/-1920.0.1280.720@0.0.1536.864" timestamp="1685877684279" />
+    <state x="249" y="7" key="SettingsEditor/0.0.1536.864@0.0.1536.864" timestamp="1687759418702" />
+    <state x="361" y="165" key="Vcs.Push.Dialog.v2" timestamp="1688128763976">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state x="361" y="165" key="Vcs.Push.Dialog.v2/0.0.1536.864/-1920.0.1280.720@0.0.1536.864" timestamp="1685979329332" />
+    <state x="361" y="165" key="Vcs.Push.Dialog.v2/0.0.1536.864@0.0.1536.864" timestamp="1688128763976" />
+    <state x="563" y="345" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1685933641831">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state x="563" y="345" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1536.864/-1920.0.1280.720@0.0.1536.864" timestamp="1685933641831" />
+    <state x="529" y="144" key="git4idea.branch.GitSmartOperationDialog" timestamp="1688128738078">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state x="529" y="144" key="git4idea.branch.GitSmartOperationDialog/0.0.1536.864/-1920.0.1280.720@0.0.1536.864" timestamp="1685890398671" />
+    <state x="529" y="144" key="git4idea.branch.GitSmartOperationDialog/0.0.1536.864@0.0.1536.864" timestamp="1688128738078" />
+    <state x="178" y="93" key="new project wizard" timestamp="1685934021438">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state x="178" y="93" key="new project wizard/0.0.1536.864/-1920.0.1280.720@0.0.1536.864" timestamp="1685934021438" />
+  </component>
+</project>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="top.itcat.mall.mapper.UmsMenuMapper">
+    <resultMap id="BaseResultMap" type="top.itcat.mall.entity.UmsMenu">
+        <id property="id" column="id"/>
+        <result property="createTime" column="create_time"/>
+        <result property="sort" column="sort"/>
+        <result property="name" column="name"/>
+        <result property="title" column="title"/>
+        <result property="hidden" column="hidden"/>
+        <result property="icon" column="icon"/>
+        <result property="level" column="level"/>
+        <result property="parentId" column="parent_id"/>
+    </resultMap>
+
+    <select id="selectListByAdminId" resultMap="BaseResultMap">
+        select um.id          as id,
+               um.parent_id   as parent_id,
+               um.create_time as create_time,
+               um.title       as title,
+               um.level       as level,
+               um.sort        as sort,
+               um.name        as name,
+               um.icon        as icon,
+               um.hidden      as hidden
+        from ums_menu um
+                 inner join ums_role_menu_relation urmr on um.id = urmr.menu_id
+                 inner join ums_role ur on ur.id = urmr.role_id
+                 inner join ums_admin_role_relation uarr on ur.id = uarr.role_id
+        where uarr.admin_id = #{adminId}
+    </select>
+
+    <select id="selectListByRoleId" resultMap="BaseResultMap">
+        select um.id          as id,
+               um.parent_id   as parent_id,
+               um.create_time as create_time,
+               um.title       as title,
+               um.level       as level,
+               um.sort        as sort,
+               um.name        as name,
+               um.icon        as icon,
+               um.hidden      as hidden
+        from ums_menu um
+                 inner join ums_role_menu_relation urmr on um.id = urmr.menu_id
+        where urmr.role_id = #{roleId}
+    </select>
+</mapper>
